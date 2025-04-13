@@ -2,7 +2,44 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Download and install nvm:
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+```
+
+Restart the shell:
+
+```bash
+reset
+```
+
+Download and install Node.js:
+
+```bash
+nvm install 23
+```
+
+Verify the Node.js version:
+
+```bash
+node -v
+nvm current
+```
+
+Verify npm version:
+
+```bash
+npm -v
+```
+
+install dependencies
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
