@@ -7,7 +7,7 @@ export default async function Page() {
   let { data: items_list, error } = await supabase
     .from('items_list') 
     .select('*')
-    .eq('category', 'film')
+    .eq('category', 'serie')
 
   if (error) {
     console.error('Error fetching data:', error)
