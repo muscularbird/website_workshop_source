@@ -15,6 +15,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import Link from 'next/link';
+import AddIcon from '@mui/icons-material/Add';
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -117,70 +119,130 @@ export default function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{
+        backgroundColor: 'rgba(10, 15, 31, 0.3)', // #0a0f1f avec 80% d’opacité
+        backdropFilter: 'blur(10px)', // optionnel : effet de flou derrière
+        boxShadow: 'none', // retire l'ombre si tu veux un look clean
+      }}
+      >
         <Toolbar className="flex justify-between items-center">
-          <div className="flex items-center">
+          {/* Partie gauche */}
+          <Box className="flex items-center gap-4">
+            <Link href="/">
+              <img
+                  src="/assets/sprites/logo_light.png"
+                  alt="Rate Things logo"
+                  width={100}
+                  height={100}
+                  style={{ cursor: 'pointer' }}
+              />
+            </Link>
+
+            <Link href="/films" passHref legacyBehavior>
+              <Typography
+                  component="a"
+                  variant="h6"
+                  sx={{
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover': { textDecoration: 'underline' },
+                  }}
+              >
+                Films
+              </Typography>
+            </Link>
+
+            <Link href="/series" passHref legacyBehavior>
+              <Typography
+                  component="a"
+                  variant="h6"
+                  sx={{
+                    color: 'white',
+                    textDecoration: 'none',
+                    '&:hover': { textDecoration: 'underline' },
+                  }}
+              >
+                Séries
+              </Typography>
+            </Link>
+          </Box>
+
+          {/* Partie droite */}
+          <Box className="flex items-center gap-4">
             <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{mr: 2}}
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
             >
               <MenuIcon />
             </IconButton>
-          </div>
-          
-          <div className="flex-1 flex justify-center max-w-xl mx-4">
-            <div className="relative rounded-md bg-white/15 hover:bg-white/25 w-full">
+
+            <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="add item"
+                sx={{
+                  borderLeft: '3px solid #2196f3',
+                  borderRight: '3px solid #2196f3',
+                  borderRadius: '10px',
+                  padding: '8px',
+                  color: '#2196f3',
+                  transition: '0.2s',
+                  '&:hover': {
+                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                  },
+                }}
+            >
+              <AddIcon />
+            </IconButton>
+
+            <div className="relative rounded-md bg-white/15 hover:bg-white/25 w-64">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
-                inputProps={{ 'aria-label': 'search' }}
-                className="text-white pl-10 w-full transition-all duration-200"
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                  className="text-white pl-10 w-full transition-all duration-200"
               />
             </div>
-          </div>
-          
-          <div className="flex items-center">
+
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <IconButton
-                size="large"
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
+              <IconButton size="large" aria-label="show 17 new notifications" color="inherit">
                 <Badge badgeContent={17} color="error">
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
               <IconButton
-                size="large"
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
               >
                 <AccountCircle />
               </IconButton>
             </Box>
+
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
-                size="large"
-                aria-label="show more"
-                aria-controls={mobileMenuId}
-                aria-haspopup="true"
-                onClick={handleMobileMenuOpen}
-                color="inherit"
+                  size="large"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
               >
                 <MoreIcon />
               </IconButton>
             </Box>
-          </div>
+          </Box>
         </Toolbar>
+
       </AppBar>
       {renderMobileMenu}
       {renderMenu}

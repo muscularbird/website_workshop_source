@@ -7,7 +7,6 @@ export default async function Page() {
   let { data: items_list, error } = await supabase
     .from('items_list') 
     .select('*')
-    .eq('category', 'film')
 
   if (error) {
     console.error('Error fetching data:', error)
@@ -19,10 +18,10 @@ export default async function Page() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-      {items_list.map((item) => (
-        <Tile key={item.id} film={item} />
-      ))}
-    </div>
+      <div className="min-h-screen grid lg:grid-cols-3 gap-4 p-4 text-white">
+        {items_list.map((item) => (
+            <Tile key={item.id} film={item} />
+        ))}
+      </div>
   )
 }

@@ -16,7 +16,7 @@ interface TileProps {
 
 export default function Tile({ film }: TileProps) {
     return (
-        <div className="flex flex-col items-center justify-center p-2 border rounded-lg shadow-sm hover:shadow-md transition-shadow">
+        <div className="flex flex-col items-center justify-center p-2 h-100 border rounded-lg shadow-sm hover:shadow-md transition-shadow">
             <h2 className="text-xl font-semibold">{film.title}</h2>
             {/* Add more film information display as needed */}
             <img src={film.img_link} alt={film.title} className="w-50 h-full object-cover rounded-md m-5" />
