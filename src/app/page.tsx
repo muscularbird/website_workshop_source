@@ -18,7 +18,7 @@ export default async function Page() {
   }
 
   return (
-      <div className="min-h-screen grid lg:grid-cols-3 gap-4 p-4 text-white">
+      <div className="min-h-screen flex flex-wrap gap-4 p-4 text-white">
         {items_list.map((item) => (
             <Tile key={item.id} film={item} />
         ))}
