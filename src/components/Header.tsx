@@ -17,6 +17,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
+import AddItemModal from './add_item'; // adapte le chemin si besoin
+
 
 export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -178,25 +180,30 @@ export default function Header() {
               <MenuIcon />
             </IconButton>
 
-            <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="add item"
-                sx={{
-                  borderLeft: '3px solid #2196f3',
-                  borderRight: '3px solid #2196f3',
-                  borderRadius: '10px',
-                  padding: '8px',
-                  color: '#2196f3',
-                  transition: '0.2s',
-                  '&:hover': {
-                    backgroundColor: 'rgba(33, 150, 243, 0.1)',
-                  },
-                }}
-            >
-              <AddIcon />
-            </IconButton>
+            <AddItemModal
+                trigger={(openModal: React.MouseEventHandler<HTMLButtonElement> | undefined) => (
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="add item"
+                        onClick={openModal}
+                        sx={{
+                          borderLeft: '3px solid #2196f3',
+                          borderRight: '3px solid #2196f3',
+                          borderRadius: '10px',
+                          padding: '8px',
+                          color: '#2196f3',
+                          transition: '0.2s',
+                          '&:hover': {
+                            backgroundColor: 'rgba(33, 150, 243, 0.1)',
+                          },
+                        }}
+                    >
+                      <AddIcon />
+                    </IconButton>
+                )}
+            />
 
             <div className="relative rounded-md bg-white/15 hover:bg-white/25 w-64">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -242,7 +249,6 @@ export default function Header() {
             </Box>
           </Box>
         </Toolbar>
-
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
