@@ -17,7 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
-import AddItemModal from './add_item'; // adapte le chemin si besoin
+import AddItemModal from './AddItemModal'; // adapte le chemin si besoin
 
 
 export default function Header() {

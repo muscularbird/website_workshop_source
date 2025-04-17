@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react";
+import Image from "next/image";
 
 interface Film {
     id: number;
@@ -23,18 +24,18 @@ export default function Tile({ film }: TileProps) {
     const [isHovered, setIsHovered] = useState(false);
     
     return (
-        <div onClick={() => setIsHovered(!isHovered)} className={`${isHovered ? 'w-full' : 'w-100'}  ${!isHovered ? 'items-center' : 'flex flex-row'} border rounded-lg shadow-sm hover:shadow-md p-1 h-100 duration-300 ease-in-out`}>
+        <div onClick={() => setIsHovered(!isHovered)} className={`${isHovered ? 'w-full' : 'w-auto'} ${!isHovered ? 'items-center' : 'flex flex-row'}
+        hover:border-gray-600 rounded-lg shadow-sm hover:bg-gray-600 ${isHovered ? 'pl-15' : 'p-8'} h-full duration-300 ease-in-out`}>
             <div className="flex flex-col items-center justify-center">
                 <h2 className="text-xl font-semibold">{film.title}</h2>
-                {/* Add more film information display as needed */}
-                <img src={film.img_link} alt={film.title} className="w-50 h-full object-cover rounded-md m-5" />
+                <Image src={film.img_link} alt={film.title} width={100} height={100} className="w-50 h-full object-cover rounded-md m-5"/>
                 <p>{film.release_date}</p>
                 {/* <p>{film.category}</p> */}
                 <p>{film.global_rate}</p>
             </div>
             {isHovered && (
-                <div className="flex flex-col m-10 p-1 h-100 shadow-sm hover:shadow-md duration-300 ease-in-out">
-                    <p>{film.description}</p>
+                <div className="m-10 p-1 h-full w-sm">
+                    <p className="text-lg w-sm">{film.description}</p>
                 </div>
             )}
         </div>
