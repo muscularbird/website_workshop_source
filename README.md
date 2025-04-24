@@ -33,6 +33,12 @@ Verify npm version:
 npm -v
 ```
 
+Refer to this link to set-up your project:
+
+```bash
+https://nextjs.org/docs/app/api-reference/cli/create-next-app
+```
+
 install dependencies
 
 ```bash
